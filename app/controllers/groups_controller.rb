@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @groups = Group.all
+    @groups = Group.where(created_by: current_user)
   end
 
   def show
@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.created_by = current_user.id
     if @group.save
       redirect_to @group, notice: 'Group was successfully created.'
     else

@@ -13,6 +13,7 @@ class FriendsController < ApplicationController
   def create
     @friend = Friend.new(friend_params)
     @friend.group_id = params[:group_id]
+    @friend.created_by = current_user.id
     if @friend.save
       redirect_to group_path(params[:group_id]), notice: 'Friend was successfully created.'
     else
