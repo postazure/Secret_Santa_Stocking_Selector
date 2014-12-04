@@ -37,6 +37,9 @@ class FriendsController < ApplicationController
   private
     def set_friend
       @friend = Friend.find_by(id: params[:id], created_by: current_user)
+      if @friend.nil?
+        redirect_to groups_path, alert: "That friend does not belong to you!"
+      end
     end
 
     def friend_params
