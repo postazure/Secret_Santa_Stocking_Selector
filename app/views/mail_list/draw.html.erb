@@ -1,0 +1,7 @@
+<% @mailing_list.inspect %>
+
+<% @mailing_list.each do |pair| %>
+  <p>
+    <%= pair.first.name %> => <%= pair.last.name %>
+  </p>
+<% end %>

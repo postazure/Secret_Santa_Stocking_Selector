@@ -5,6 +5,7 @@
   <div class="pull-right">
     <%= link_to 'Add Friend to Group', new_group_friend_path(params[:id]), class:"btn btn-primary" %>
     <%= link_to 'All Groups', groups_path, class:"btn btn-default"%>
+    <%= link_to 'Generate Picks', draw_path(params[:id]) %>
   </div>
 <h4>Friends</h4>
 <table class="table">

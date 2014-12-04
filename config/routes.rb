@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   root to: "groups#index"
+  get 'draw/:group_id' => 'mail_list#draw', as: :draw
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
