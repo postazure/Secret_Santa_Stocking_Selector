@@ -1,16 +1,21 @@
 <h2>Resend unlock instructions</h2>
+<% unless devise_error_messages!.empty? %>
+<div class="alert alert-danger" role="alert">
+  <%= devise_error_messages! %>
+</div>
+<% end %>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+  <div class="form-group">
+    <div class="actions">
+      <%= f.submit "Resend unlock instructions" %>
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
