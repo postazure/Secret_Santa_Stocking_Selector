@@ -1,23 +1,19 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: project_development
+  database: secretsanta_development
   pool: 5
-  username:
-  password:
+
 
 test: &TEST
   adapter: postgresql
   encoding: utf8
-  database: project_test
+  database: secretsanta_test
   pool: 5
-  username:
-  password:
+
 
 production:
   adapter: postgresql
   encoding: utf8
-  database: project_production
+  database: secretsanta_production
   pool: 5
-  username:
-  password:
