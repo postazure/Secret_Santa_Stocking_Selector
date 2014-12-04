@@ -2,16 +2,19 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
   def new
     @friend = Friend.new
+    @group = Group.find(params[:group_id])
   end
 
   def edit
+    @group = Group.find(params[:group_id])
+
   end
 
   def create
     @friend = Friend.new(friend_params)
-    @friend.group_id = params[:id]
+    @friend.group_id = params[:group_id]
     if @friend.save
-      redirect_to groups_path, notice: 'Friend was successfully created.'
+      redirect_to group_path(params[:group_id]), notice: 'Friend was successfully created.'
     else
       render :new
     end
@@ -19,7 +22,7 @@ class FriendsController < ApplicationController
 
   def update
     if @friend.update(friend_params)
-      redirect_to @friend, notice: 'Friend was successfully updated.'
+      redirect_to group_path(params[:group_id]), notice: 'Friend was successfully updated.'
     else
       render :edit
     end
@@ -27,7 +30,7 @@ class FriendsController < ApplicationController
 
   def destroy
     @friend.destroy
-    redirect_to friends_url, notice: 'Friend was successfully destroyed.'
+    redirect_to group_path(@friend.group_id), notice: 'Friend was successfully destroyed.'
   end
 
   private

@@ -1,4 +1,4 @@
-<%= form_for(@friend) do |f| %>
+<%= form_for([@group, @friend]) do |f| %>
   <% if @friend.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
@@ -11,19 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder:"First Name" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :spouse %><br>
-    <%= f.text_field :spouse %>
+    <%= f.text_field :spouse, placeholder:"Last Name"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, placeholder:"email" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="actions">
+      <%= f.submit class:"btn btn-primary"%>
+      <%= link_to 'Back', group_path(params[:group_id]), class:"btn btn-default"%>
+    </div>
   </div>
 <% end %>

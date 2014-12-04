@@ -39,11 +39,4 @@ class FriendsControllerTest < ActionController::TestCase
     assert_redirected_to friend_path(assigns(:friend))
   end
 
-  test "should destroy friend" do
-    assert_difference('Friend.count', -1) do
-      delete :destroy, id: @friend
-    end
-
-    assert_redirected_to friends_path
-  end
 end
