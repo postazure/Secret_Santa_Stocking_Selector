@@ -1,11 +1,17 @@
 <p id="notice"><%= notice %></p>
 <header class="page-header">
   <h1><%= @group.name %></h1>
+  <% if notice || alert %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+    <%= alert %>
+  </div>
+  <% end %>
 </header>
   <div class="pull-right">
     <%= link_to 'Add Friend to Group', new_group_friend_path(params[:id]), class:"btn btn-primary" %>
     <%= link_to 'All Groups', groups_path, class:"btn btn-default"%>
-    <%= link_to 'Generate Picks', draw_path(params[:id]) %>
+
   </div>
 <h4>Friends</h4>
 <table class="table">
@@ -34,3 +40,11 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="pull-right">
+  <% if @friends.count <= 1 %>
+    <%= link_to "Need #{2 - @friends.count} more friends to generate.","", class:"btn active-link" %>
+  <% elsif %>
+    <%= link_to 'Generate Picks', draw_path(params[:id]), class:"btn btn-warning" %>
+  <% end %>
+</div>
