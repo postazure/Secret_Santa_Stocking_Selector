@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  # resources :users
+  devise_for :users
+  resources :users
 
   resources :groups do
     resources :friends
   end
+
+  root to: "groups#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

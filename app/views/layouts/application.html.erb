@@ -9,8 +9,12 @@
       <div class="container">
         <%= link_to "Groups", groups_path, class:"navbar-brand" %>
         <div class="pull-right" >
-          <button type="button" class="btn btn-default navbar-btn">Sign in</button>
-          <button type="button" class="btn btn-default navbar-btn">Sign up</button>
+          <% if user_signed_in? %>
+            <%= link_to 'Sign out', destroy_user_session_path, class:"btn btn-default navbar-btn", :method => :delete %>
+          <% else %>
+            <%= link_to 'Sign in', new_user_session_path, class:"btn btn-primary navbar-btn"  %>
+            <%= link_to "Sign up", new_user_registration_path, class:"btn btn-default navbar-btn" %>
+          <% end %>
         </div>
       </div>
     </nav>
