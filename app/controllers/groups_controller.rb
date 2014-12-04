@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @friends = Friend.where(group_id: params[:id])
+    @friends = Friend.where(group_id: params[:id], created_by: current_user)
   end
 
   def new
@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
   end
 
   def update
+
     if @group.update(group_params)
       redirect_to @group, notice: 'Group was successfully updated.'
     else
@@ -41,7 +42,10 @@ class GroupsController < ApplicationController
 
   private
     def set_group
-      @group = Group.find(params[:id])
+      @group = Group.find_by(id: params[:id], created_by: current_user)
+      if @group.nil?
+        redirect_to groups_path, alert: "That group does not belong to you! These are your groups:"
+      end
     end
 
     def group_params

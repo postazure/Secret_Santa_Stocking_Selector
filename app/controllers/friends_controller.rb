@@ -36,7 +36,7 @@ class FriendsController < ApplicationController
 
   private
     def set_friend
-      @friend = Friend.find(params[:id])
+      @friend = Friend.find_by(id: params[:id], created_by: current_user)
     end
 
     def friend_params
