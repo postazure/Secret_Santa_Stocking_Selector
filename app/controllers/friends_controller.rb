@@ -17,7 +17,8 @@ class FriendsController < ApplicationController
     if @friend.save
       redirect_to group_path(params[:group_id]), notice: 'Friend was successfully created.'
     else
-      render :new
+      redirect_to new_group_friend_path(params[:group_id]), alert: "Requires: Name and Email."
+      # render :new #this is broken
     end
   end
 
@@ -25,7 +26,8 @@ class FriendsController < ApplicationController
     if @friend.update(friend_params)
       redirect_to group_path(params[:group_id]), notice: 'Friend was successfully updated.'
     else
-      render :edit
+      redirect_to edit_group_friend_path(@friend.group_id,@friend.id), alert: "Requires: Name and Email."
+      # render :edit #this is broken
     end
   end
 
