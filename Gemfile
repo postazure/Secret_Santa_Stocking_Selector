@@ -14,6 +14,7 @@ gem 'slim'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'devise'
+gem "dotenv"
 
 group :production do
   gem "rails_12factor"
