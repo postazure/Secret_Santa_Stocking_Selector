@@ -2,11 +2,11 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @groups = Group.where(created_by: current_user)
+    @groups = Group.where(created_by: current_user).order('id')
   end
 
   def show
-    @friends = Friend.where(group_id: params[:id], created_by: current_user)
+    @friends = Friend.where(group_id: params[:id], created_by: current_user).order('id')
   end
 
   def new
