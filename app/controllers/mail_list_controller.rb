@@ -35,7 +35,20 @@ class MailListController < ApplicationController
     if selection_list.length < givers.length
       draw
     else
-      @mailing_list = selection_list
+      # @mailing_list = selection_list
+      return selection_list
+    end
+  end
+
+
+  def mail_draws
+    mailing_list = draw
+    mailing_list.each do |pair|
+      giver = pair.first
+      reciever = pair.last
+
+      SendDraws.send_draws_email(giver, reciever).deliver
+      
     end
   end
 end

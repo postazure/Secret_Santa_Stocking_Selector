@@ -38,6 +38,7 @@
   <% if @friends.count <= 1 %>
     <%= link_to "Need #{2 - @friends.count} more friends to generate.","", class:"btn active-link" %>
   <% elsif %>
-    <%= link_to 'Generate Picks', draw_path(params[:id]), class:"btn btn-warning" %>
+    
+    <%= link_to 'Generate Picks', mail_draws_path(params[:id]), class:"btn btn-warning" %>
   <% end %>
 </div>
