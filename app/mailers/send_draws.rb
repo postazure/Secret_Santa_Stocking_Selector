@@ -1,5 +1,5 @@
 class SendDraws < ActionMailer::Base
-  default from: current_user.email
+  default from: @current_user.email
 
   def send_draws_email(giver, reciever)
     @giver = giver

@@ -43,12 +43,13 @@ class MailListController < ApplicationController
 
   def mail_draws
     mailing_list = draw
+    @current_user = current_user
     mailing_list.each do |pair|
       giver = pair.first
       reciever = pair.last
 
       SendDraws.send_draws_email(giver, reciever).deliver
-      
+
     end
   end
 end
