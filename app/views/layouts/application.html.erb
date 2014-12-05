@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        <%= link_to "Groups", groups_path, class:"navbar-brand" %>
+        <%= link_to "Secret Santa Drawing App", groups_path, class:"navbar-brand" %>
         <div class="pull-right" >
           <% if user_signed_in? %>
             <%= link_to 'Sign out', destroy_user_session_path, class:"btn btn-default navbar-btn", :method => :delete %>
