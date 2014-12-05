@@ -43,7 +43,7 @@ class MailListController < ApplicationController
 
   def mail_draws
     mailing_list = draw
-    @mail_from = (current_user ? current_user.email : "")
+    @mail_from = (current_user ? current_user.email : "noreply@secretsanta.com")
     mailing_list.each do |pair|
       giver = pair.first
       reciever = pair.last

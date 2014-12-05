@@ -35,8 +35,8 @@
 </table>
 
 <div class="pull-right">
-  <% if @friends.count <= 1 %>
-    <%= link_to "Need #{2 - @friends.count} more friends to generate.","", class:"btn active-link" %>
+  <% if @friends.count <= 2 %>
+    <%= link_to "Need #{3 - @friends.count} more friends to generate.","", class:"btn active-link" %>
   <% elsif %>
     <%= link_to 'Generate Picks and Email Group', mail_draws_path(params[:id]), class:"btn btn-warning", data:{confirm: "Confirm that you want to Draw and EMAIL all friends in this group.\nNote: Each time the button is pressed a new random draw is generated, and new emails are sent!"} %>
   <% end %>
