@@ -1,5 +1,5 @@
 class SendDraws < ActionMailer::Base
-  default from: "SecretSanta@Mailer.com"
+  default from: "SecretSanta@postazure.com"
 
   def send_draws_email(giver, reciever)
     @giver = giver
