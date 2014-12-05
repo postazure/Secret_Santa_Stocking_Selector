@@ -26,7 +26,7 @@
       <td>
         <div class="pull-right">
           <%= link_to 'Edit', edit_group_friend_path(friend.group_id, friend), class:"btn btn-info" %>
-          <%= link_to 'Destroy', group_friend_path(params[:id], friend), class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Remove', group_friend_path(params[:id], friend), class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </td
     </tr>
@@ -38,7 +38,6 @@
   <% if @friends.count <= 1 %>
     <%= link_to "Need #{2 - @friends.count} more friends to generate.","", class:"btn active-link" %>
   <% elsif %>
-    
-    <%= link_to 'Generate Picks', mail_draws_path(params[:id]), class:"btn btn-warning" %>
+    <%= link_to 'Generate Picks and Email Group', mail_draws_path(params[:id]), class:"btn btn-warning", data:{confirm: "Confirm that you want to Draw and EMAIL all friends in this group.\nNote: Each time the button is pressed a new random draw is generated, and new emails are sent!"} %>
   <% end %>
 </div>
